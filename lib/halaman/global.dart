@@ -1,3 +1,5 @@
+import 'package:covid/api/post_model.dart';
+import 'package:covid/api/http_service.dart';
 import 'package:covid/core/consts.dart';
 // ignore: unused_import
 import 'package:covid/core/flutter_icons.dart';
@@ -6,6 +8,7 @@ import 'package:flutter/material.dart';
 class PageGlobal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final DataGlobal _getGlobal = new DataGlobal();
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       body: Column(

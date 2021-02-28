@@ -1,4 +1,7 @@
+import 'package:covid/api/post_model.dart';
+import 'package:covid/api/http_service.dart';
 import 'package:covid/core/consts.dart';
+
 // ignore: unused_import
 import 'package:covid/core/flutter_icons.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +9,7 @@ import 'package:flutter/material.dart';
 class PageProvinsi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final DataIndo _getIndo = new DataIndo();
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       body: Column(
@@ -27,45 +31,45 @@ class PageProvinsi extends StatelessWidget {
               ],
             ),
           ),
+          SizedBox(height: 20.0),
           Center(
               child: Text(
-            'Data Kasus Corona Berdasarkan Global',
+            'Data Kasus Corona Berdasarkan Provinsi',
             style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
           )),
           Padding(
             padding: EdgeInsets.all(6.0),
           ),
-          DataTable(
-            columns: [
-              DataColumn(label: Text('Nomor')),
-              DataColumn(label: Text('provinsi')),
-              DataColumn(label: Text('Positif')),
-              DataColumn(label: Text('Sembuh')),
-              DataColumn(label: Text('Meninggal')),
-            ],
-            rows: [
-              DataRow(cells: [
-                DataCell(Text('1')),
-                DataCell(Text('Jawa barat')),
-                DataCell(Text('50')),
-                DataCell(Text('45')),
-                DataCell(Text('5')),
-              ]),
-              DataRow(cells: [
-                DataCell(Text('2')),
-                DataCell(Text('Jawa timur')),
-                DataCell(Text('40')),
-                DataCell(Text('30')),
-                DataCell(Text('5')),
-              ]),
-              DataRow(cells: [
-                DataCell(Text('3')),
-                DataCell(Text('Kalimantan')),
-                DataCell(Text('70')),
-                DataCell(Text('50')),
-                DataCell(Text('6')),
-              ]),
-            ],
+          FutureBuilder(
+            future: _getIndo.getDataIndo(),
+            builder: (BuildContext context,
+                AsyncSnapshot<List<CovidProvinsi>> snapshot) {
+              if (snapshot.hasData) {
+                List<CovidProvinsi> dataIndo = snapshot.data;
+                return SingleChildScrollView(
+                  child: DataTable(
+                    columns: [
+                      DataColumn(label: Text('Provinsi')),
+                      DataColumn(label: Text('Positif')),
+                      DataColumn(label: Text('Sembuh')),
+                      DataColumn(label: Text('Meninggal')),
+                    ],
+                    rows: dataIndo
+                        .map((CovidProvinsi dataIndo) => DataRow(cells: [
+                              DataCell(Text(dataIndo.provinsi)),
+                              DataCell(Text(dataIndo.kasus_posi.toString())),
+                              DataCell(Text(dataIndo.kasus_sem.toString())),
+                              DataCell(Text(dataIndo.kasus_meni.toString())),
+                            ]))
+                        .toList(),
+                  ),
+                );
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
           ),
           Padding(
             padding: EdgeInsets.all(10.0),
@@ -93,7 +97,9 @@ class PageProvinsi extends StatelessWidget {
         Card(
           child: Container(
             child: ListTile(
-              title: Text("Sembuh"),
+              title: Text(
+                "Sembuh",
+              ),
               leading: CircleAvatar(
                 backgroundImage: AssetImage('assets/images/happy.png'),
               ),

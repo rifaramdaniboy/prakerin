@@ -31,7 +31,7 @@ class PageAbout extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: RichText(
               text: TextSpan(
-                text: 'Symptoms of',
+                text: 'Gejala',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 28,
@@ -43,7 +43,7 @@ class PageAbout extends StatelessWidget {
                     style: TextStyle(
                       color: AppColors.mainColor,
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -56,10 +56,10 @@ class PageAbout extends StatelessWidget {
               padding: EdgeInsets.only(left: 16),
               physics: BouncingScrollPhysics(),
               children: <Widget>[
-                _buildSymptomItem("assets/images/1.png", "Fever"),
-                _buildSymptomItem("assets/images/2.png", "Dry Cought"),
-                _buildSymptomItem("assets/images/3.png", "Headache"),
-                _buildSymptomItem("assets/images/4.png", "Breathless"),
+                _buildSymptomItem("assets/images/1.png", "Demam"),
+                _buildSymptomItem("assets/images/2.png", "Batuk Kering"),
+                _buildSymptomItem("assets/images/3.png", "Sakit Kepala"),
+                _buildSymptomItem("assets/images/4.png", "Sesak Nafas"),
               ],
             ),
           ),
@@ -67,7 +67,7 @@ class PageAbout extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: Text(
-              "Prevention",
+              "Pencegahan",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 24,
@@ -83,11 +83,10 @@ class PageAbout extends StatelessWidget {
               padding: EdgeInsets.only(left: 16),
               physics: BouncingScrollPhysics(),
               children: <Widget>[
-                _buildPrevention(
-                    "assets/images/a10.png", "WASH", "hands often"),
-                _buildPrevention("assets/images/a4.png", "COVER", "your cough"),
-                _buildPrevention("assets/images/a6.png", "ALWAYS", "clean"),
-                _buildPrevention("assets/images/a9.png", "USE", "mask"),
+                _buildPrevention("assets/images/a10.png", "Mencuci", "Tangan"),
+                _buildPrevention("assets/images/a4.png", "Tutupi", "Batukmu"),
+                _buildPrevention("assets/images/a6.png", "Selalu", "Bersih"),
+                _buildPrevention("assets/images/a9.png", "Gunakan", "Masker"),
               ],
             ),
           ),
@@ -198,7 +197,7 @@ class PageAbout extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),
           child: Text(
-            "COVID 19",
+            "COVID-19",
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
@@ -210,7 +209,7 @@ class PageAbout extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),
           child: Text(
-            "Corona Virus is an infectious disease caused by the corona virus that was recently discovered.\nMost people who catch COVID-19 will experience mild to moderate symptoms and will recover without special treatment.",
+            "virus Corona merupakan penyakit infeksi yang disebabkan oleh virus corona yang baru ditemukan.\n sebagian besar orang yang tertular COVID-19 akan mengalami gejala ringan hingga sedang dan akan sembuh tanpa pengobatan khusus.",
             style: TextStyle(
               color: Colors.white,
               height: 1.5,
